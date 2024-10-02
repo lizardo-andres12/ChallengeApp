@@ -1,21 +1,28 @@
 package com.example.ChallengeApp;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Challenge {
-    private Long id;
+    @Id
+    private long id;
     private String month;
     private String description;
 
-    public Challenge(Long id, String month, String description) {
+    public Challenge() {};
+
+    public Challenge(long id, String month, String description) {
         this.id = id;
         this.month = month;
         this.description = description;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

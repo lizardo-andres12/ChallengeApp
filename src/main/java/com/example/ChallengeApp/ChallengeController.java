@@ -33,10 +33,10 @@ public class ChallengeController {
     }
 
     @GetMapping("/{month}")
-    public ResponseEntity<Challenge> getChallenge(@PathVariable String month) {
-        Challenge challenge = challengeService.getChallenge(month);
-        if (challenge != null) {
-            return new ResponseEntity<>(challenge, HttpStatus.OK);
+    public ResponseEntity<List<Challenge>> getChallenge(@PathVariable String month) {
+        List<Challenge> challenges = challengeService.getChallenge(month);
+        if (challenges != null) {
+            return new ResponseEntity<>(challenges, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
