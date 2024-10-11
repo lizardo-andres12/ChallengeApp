@@ -3,7 +3,6 @@ package com.example.ChallengeApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +21,6 @@ public class ChallengeService {
 
     public boolean addChallenge(Challenge challenge) {
         if (challenge != null) {
-            challenge.setId(nextId++);
             challengeRepository.save(challenge);
             return true;
         } else {

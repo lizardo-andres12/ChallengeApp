@@ -1,12 +1,16 @@
 package com.example.ChallengeApp;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Challenge {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String month;
     private String description;
 
