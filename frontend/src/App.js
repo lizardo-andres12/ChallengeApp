@@ -8,18 +8,27 @@ import AddChallenge from "./components/AddChallenge";
 function App() {
     const [challenges, setChallenges] = useState([]);
 
-    useEffect(() => {
-        const fetchChallenges = async () => {
+    const fetchChallenges = async () => {
+        try {
             const response = await axios.get('http://localhost:8080/challenges');
             setChallenges(response.data);
-        };
+        } catch (error) {
+            console.error("Error fetching challenges: ", error)
+        }
+    };
+
+    useEffect(() => {
         fetchChallenges();
     }, []);
 
+    const handleChallengeAdded = () => {
+        fetchChallenges();
+    }
+
     return (
         <div className="App">
-            <AddChallenge />
             <h1>Monthly Challenges</h1>
+            <AddChallenge onChallengeAdded={fetchChallenges}/>
             <ChallengeList challenges={challenges}/>
         </div>
     );

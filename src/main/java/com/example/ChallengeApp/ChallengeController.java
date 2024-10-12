@@ -18,13 +18,11 @@ public class ChallengeController {
         this.challengeService = challengeService;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public ResponseEntity<List<Challenge>> getAllChallenges() {
         return new ResponseEntity<>(challengeService.getAllChallenges(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<String> addChallenge(@RequestBody Challenge challenge) {
         boolean success = challengeService.addChallenge(challenge);
@@ -35,7 +33,6 @@ public class ChallengeController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/{month}")
     public ResponseEntity<List<Challenge>> getChallenge(@PathVariable String month) {
         List<Challenge> challenges = challengeService.getChallenge(month);
@@ -45,7 +42,6 @@ public class ChallengeController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/{id}")
     public ResponseEntity<String> updateChallenge(@PathVariable long id, @RequestBody Challenge updateChallenge) {
         boolean updated = challengeService.updateChallenge(id, updateChallenge);
@@ -56,7 +52,6 @@ public class ChallengeController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteChallenge(@PathVariable long id) {
         boolean deleted = challengeService.deleteChallenge(id);
